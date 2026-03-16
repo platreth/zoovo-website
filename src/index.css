@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 40% 13%;
+    --foreground: 0 0% 100%;
+
+    --card: 220 38% 17%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 220 38% 17%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 51 100% 50%;
+    --primary-foreground: 220 40% 13%;
+
+    --secondary: 220 35% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 220 30% 20%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 51 100% 50%;
+    --accent-foreground: 220 40% 13%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 30% 24%;
+    --input: 220 30% 24%;
+    --ring: 51 100% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 40% 13%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 51 100% 50%;
+    --sidebar-primary-foreground: 220 40% 13%;
+    --sidebar-accent: 220 35% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 30% 24%;
+    --sidebar-ring: 51 100% 50%;
+
+    /* Custom tokens */
+    --zoovo-navy: 220 40% 13%;
+    --zoovo-navy-light: 220 38% 17%;
+    --zoovo-teal: 51 100% 50%;
+    --zoovo-teal-light: 51 100% 60%;
+    --zoovo-gold: 40 90% 60%;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .gradient-teal {
+    background: linear-gradient(135deg, hsl(51 100% 50%), hsl(51 100% 60%));
+  }
+
+  .gradient-navy {
+    background: linear-gradient(180deg, hsl(220 40% 13%), hsl(220 38% 17%));
+  }
+
+  .text-gradient-teal {
+    background: linear-gradient(135deg, hsl(51 100% 50%), hsl(51 100% 60%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 30px -5px hsl(51 100% 50% / 0.4);
+  }
+}
