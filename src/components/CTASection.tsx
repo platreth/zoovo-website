@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { Mail, CheckCircle, Loader2 } from "lucide-react";
 import dogSilhouette from "@/assets/dog-silhouette.png";
 
-const BEEHIIV_URL = "https://magic.beehiiv.com/v1/e24217db-1881-4490-9481-03a1af95bfa9";
-
 const CTASection = () => {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -16,10 +14,14 @@ const CTASection = () => {
 
     setStatus("loading");
     try {
-      await fetch(`${BEEHIIV_URL}?email=${encodeURIComponent(email)}`, {
-        method: "GET",
-        mode: "no-cors",
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
       });
+
+      if (!res.ok) throw new Error("Subscription failed");
+
       setStatus("success");
       setEmail("");
     } catch {
