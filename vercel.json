@@ -1,6 +1,10 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/profile/:id", "destination": "https://bzoaterrltmuqedpikjv.supabase.co/functions/v1/og/profile/:id" },
+    { "source": "/pet/:id", "destination": "https://bzoaterrltmuqedpikjv.supabase.co/functions/v1/og/pet/:id" },
+    { "source": "/post/:id", "destination": "https://bzoaterrltmuqedpikjv.supabase.co/functions/v1/og/post/:id" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
