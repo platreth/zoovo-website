@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "GXMN476LWQ.com.zoovo.zoovo",
+        "paths": ["/profile/*", "/pet/*", "/post/*"]
+      }
+    ]
+  }
+}
