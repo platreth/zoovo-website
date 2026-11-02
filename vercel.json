@@ -41,6 +41,18 @@
       "destination": "/open-in-app.html"
     },
     {
+      "source": "/lost/:id",
+      "destination": "https://api.zoovo.eu/functions/v1/og/lost/:id"
+    },
+    {
+      "source": "/park/:slug",
+      "destination": "https://api.zoovo.eu/functions/v1/og/park/:slug"
+    },
+    {
+      "source": "/invite/:code",
+      "destination": "/invite.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

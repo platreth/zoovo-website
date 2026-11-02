@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Join Zoovo</title>
+<style>
+  :root { --yellow: #FDDA3A; --yellow-dark: #F8C002; --navy: #0D3B66; --navy-dark: #0D213B; --muted: #4a5d72; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px 16px;
+    background: linear-gradient(180deg, var(--yellow), var(--yellow-dark));
+    color: var(--navy); font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  main { max-width: 420px; width: 100%; background: #fff; border-radius: 20px; padding: 32px 24px; text-align: center; box-shadow: 0 10px 30px rgba(13, 33, 59, .15); }
+  .brand { font-weight: 800; letter-spacing: 3px; font-size: 14px; color: var(--navy-dark); }
+  h1 { font-size: 24px; margin: 12px 0 8px; text-wrap: balance; }
+  p { color: var(--muted); margin: 0 0 24px; }
+  a.button { display: block; padding: 14px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; }
+  a.primary { background: var(--navy); color: #fff; margin-bottom: 12px; }
+  a.secondary { color: var(--navy); border: 2px solid var(--navy); }
+  .code { font: 700 20px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 2px; background: #FFF6CC; border-radius: 12px; padding: 10px 14px; display: inline-block; margin: 0 0 20px; }
+  ol { text-align: left; color: var(--muted); margin: 0 0 24px; padding-left: 20px; }
+  a.button:focus-visible { outline: 3px solid var(--navy-dark); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">ZOOVO</div>
+  <h1 data-t="title">Your neighbour invited you to Zoovo</h1>
+  <p data-t="body">Zoovo connects pet parents nearby: playdates, walks and trusted local pros.</p>
+  <div class="code" id="code" hidden></div>
+  <ol>
+    <li data-t="step1">Get Zoovo from the App Store.</li>
+    <li data-t="step2">Come back and tap this invite link again, so the app picks up the invite.</li>
+  </ol>
+  <a class="button primary" href="https://apps.apple.com/app/id6778077059" data-t="store">Get Zoovo on the App Store</a>
+  <a class="button secondary" href="https://www.zoovo.eu/" data-t="home">Go to zoovo.eu</a>
+</main>
+<script>
+  // The invite code is the last path segment (/invite/<code>); shown so it can be checked.
+  var parts = location.pathname.split('/').filter(Boolean);
+  var code = parts[0] === 'invite' && parts[1] ? decodeURIComponent(parts[1]).replace(/[^A-Za-z0-9]/g, '').slice(0, 16) : '';
+  if (code) { var el = document.getElementById('code'); el.textContent = code.toUpperCase(); el.hidden = false; }
+  // Dutch for Dutch browsers; English otherwise.
+  if ((navigator.language || '').toLowerCase().startsWith('nl')) {
+    var nl = {
+      title: 'Je buur nodigt je uit voor Zoovo',
+      body: 'Zoovo brengt baasjes in de buurt samen: playdates, wandelingen en betrouwbare pro\'s in de buurt.',
+      step1: 'Download Zoovo in de App Store.',
+      step2: 'Kom terug en tik nog een keer op deze uitnodigingslink, zodat de app je uitnodiging ziet.',
+      store: 'Download Zoovo in de App Store',
+      home: 'Naar zoovo.eu'
+    };
+    document.documentElement.lang = 'nl';
+    document.title = 'Doe mee met Zoovo';
+    document.querySelectorAll('[data-t]').forEach(function (el) { el.textContent = nl[el.dataset.t]; });
+  }
+</script>
+</body>
+</html>
